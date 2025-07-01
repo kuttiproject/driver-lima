@@ -61,7 +61,9 @@ func fetchimagelist() error {
 	}
 	defer workspace.RemoveFile(tempfilepath)
 
-	err = workspace.CopyFile(tempfilepath, imagesConfigFile, 32*1024, true)
+	configfilepath := path.Join(confdir, imagesConfigFile)
+
+	err = workspace.CopyFile(tempfilepath, configfilepath, 32*1024, true)
 	if err != nil {
 		return err
 	}
